@@ -3614,7 +3614,7 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
                     </div>
 
                     <p class="mt-3"><label for="newfilename"><?php echo lng('ItemName') ?> </label></p>
-                    <input type="text" name="newfilename" id="newfilename" value="" class="form-control">
+                    <input type="text" name="newfilename" id="newfilename" value="" class="form-control" autofocus>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal"><i class="fa fa-times-circle"></i> <?php echo lng('Cancel') ?></button>
@@ -3863,6 +3863,9 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
             $(".fm-upload-wrapper .card-header-tabs a").removeClass('active');$(this).addClass('active');
             $(".fm-upload-wrapper .card-tabs-container").addClass('hidden');$(target).removeClass('hidden');
         });
+		$('.modal').on('shown.bs.modal', function() {
+		  $(this).find('[autofocus]').focus();
+		});                    
     });
 </script>
 <?php if (isset($_GET['edit']) && isset($_GET['env']) && FM_EDIT_FILE): 
